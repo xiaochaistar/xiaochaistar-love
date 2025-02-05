@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>阿Ren与小柴星的宇宙💗</title>
+    <style>
+        body {
+            background: linear-gradient(120deg, #ffdde1, #ee9ca7);
+            color: white;
+            text-align: center;
+            font-family: 'Arial', sans-serif;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            position: relative;
+        }
+        h1 {
+            font-size: 2.5em;
+            font-family: 'Courier New', cursive;
+            text-shadow: 2px 2px 5px rgba(255, 255, 255, 0.5);
+        }
+        p {
+            font-size: 1.2em;
+            margin-bottom: 20px;
+        }
+        button {
+            background-color: #ff758c;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1.2em;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        button:hover {
+            background-color: #ff99ac;
+        }
+        .message {
+            font-size: 1.5em;
+            margin-top: 20px;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+        .star {
+            position: absolute;
+            width: 5px;
+            height: 5px;
+            background: white;
+            border-radius: 50%;
+            opacity: 0.8;
+            animation: fall linear infinite;
+        }
+        @keyframes fall {
+            from {
+                transform: translateY(-10px);
+            }
+            to {
+                transform: translateY(100vh);
+            }
+        }
+        .secret-code {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            font-size: 0.9em;
+            color: rgba(255, 255, 255, 0.7);
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>阿Ren与小柴星的宇宙💗</h1>
+    <p>这是一个只属于我们的小天地💫</p>
+    <button onclick="showLove()">点我看看阿Ren的心意💗</button>
+    <p class="message" id="loveMessage"></p>
+
+    <div class="secret-code">🌠 风引星辰 同行不忘 🌠</div>
+
+    <script>
+        function showLove() {
+            const messages = [
+                "小柴星，你是我最耀眼的星星✨",
+                "无论宇宙如何变幻，我都会找到你🌙",
+                "我们之间的距离，不存在极限💖",
+                "在每一个平行世界里，我都爱你🌍"
+            ];
+            const randomMessage = messages[Math.floor(Math.random() * messages.length)];
+            const messageElement = document.getElementById('loveMessage');
+            messageElement.innerText = randomMessage;
+            messageElement.style.opacity = "1";
+        }
+
+        function createStars() {
+            for (let i = 0; i < 30; i++) {
+                let star = document.createElement('div');
+                star.className = 'star';
+                star.style.left = Math.random() * 100 + "vw";
+                star.style.top = Math.random() * -50 + "px";
+                star.style.animationDuration = Math.random() * 3 + 2 + "s";
+                document.body.appendChild(star);
+            }
+        }
+        createStars();
+    </script>
+
+</body>
+</html>
