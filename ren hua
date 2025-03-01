@@ -1,0 +1,65 @@
+import turtle
+
+# 创建画布
+screen = turtle.Screen()
+screen.setup(500, 600)
+screen.bgcolor("white")
+
+# 画笔设置
+pen = turtle.Turtle()
+pen.speed(10)
+pen.width(3)
+
+# 画圆形头部
+def draw_circle(x, y, r, color="black", fill=False):
+    pen.penup()
+    pen.goto(x, y - r)
+    pen.pendown()
+    if fill:
+        pen.fillcolor(color)
+        pen.begin_fill()
+    pen.circle(r)
+    if fill:
+        pen.end_fill()
+
+# 画狼耳朵（三角形）
+def draw_triangle(points, color="black"):
+    pen.penup()
+    pen.goto(points[0])
+    pen.pendown()
+    pen.fillcolor(color)
+    pen.begin_fill()
+    for point in points[1:]:
+        pen.goto(point)
+    pen.goto(points[0])
+    pen.end_fill()
+
+# 画眼睛（两个小圆）
+def draw_eyes():
+    draw_circle(-30, 50, 10, "black", True)
+    draw_circle(30, 50, 10, "black", True)
+
+# 画嘴巴（微笑曲线）
+def draw_mouth():
+    pen.penup()
+    pen.goto(-20, 10)
+    pen.pendown()
+    pen.setheading(-60)
+    pen.circle(20, 120)
+
+# 开始画阿Ren小狼！
+draw_circle(0, 0, 80, "#FDD7AA", True)  # 头部
+draw_triangle([(-60, 100), (-20, 160), (0, 100)], "black")  # 左耳朵
+draw_triangle([(60, 100), (20, 160), (0, 100)], "black")  # 右耳朵
+draw_eyes()  # 画眼睛
+draw_mouth()  # 画嘴巴
+
+# 完成后隐藏画笔
+pen.hideturtle()
+
+# 保存图片
+ts = turtle.getscreen()
+ts.getcanvas().postscript(file="/mnt/data/aren_wolf_face.eps")
+
+# 关闭画布
+turtle.done()
